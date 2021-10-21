@@ -1,0 +1,37 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12.x
+    commands:
+      - echo installing
+  pre_build:
+    commands:
+      - echo installing npm dependencies
+      - npm install express
+      - npm install body-parser
+      - npm install nodemon
+      - echo installing npm development dependencies
+      - npm install --save-dev jest
+      - npm install --save-dev jsdoc
+      - npm install --save-dev eslint
+      - npm install --save-dev supertest
+      - aws codeartifact login --tool npm --repository syscloud --domain syscloud --domain-owner 538782569624
+  build:
+    commands:
+      - echo build started
+      - npm run doc
+      - npm test
+      - npm publish
+      - echo Published the package successfully
+      - echo build completed
+  post_build:
+    commands:
+      - aws s3 cp ./out s3://sys-sandbox-artifacts/ --recursive
+      - aws s3 cp ./coverage s3://sys-sandbox-artifacts/ --recursive
+
+artifacts:
+  files:
+    #- out/**/*
+    - coverage/*

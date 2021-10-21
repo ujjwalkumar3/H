@@ -1,0 +1,30 @@
+{
+  "name": "ujjwal",
+  "version": "1.0.0",
+  "description": "This is a simple API built on node.js with express framework, which stores the information of IPL team names and their captain's name.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "start": "nodemon server.js",
+    "doc": ".\\node_modules\\.bin\\jsdoc index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/Sandbox-3"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.14",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.1",
+    "jest": "^27.3.1",
+    "supertest": "^6.1.6"
+  }
+}
